@@ -873,7 +873,7 @@ export class Helper{
     static filterOutDefaultConfig(defaultConfig, config, recursive=false) {
        	let res = Object.assign({}, {});
         Object.keys(config).forEach(k => {
-            if (String(config[k].constructor).startsWith("function Object")){
+            if (String(config[k]?.constructor??'').startsWith("function Object")){
                 if(recursive){
                     res[k] = Helper.filterOutDefaultConfig(defaultConfig[k], config[k]);
                 }else{
@@ -1124,7 +1124,7 @@ export class Helper{
         friday: LuxonInfo.weekdays('long')[4],
         saturday: LuxonInfo.weekdays('long')[5],
         sunday: LuxonInfo.weekdays('long')[6],
-        month: Helper.localize('settings.month')
+        month: `${Helper.localize('settings.month')}`
     };
 
 
