@@ -21,14 +21,13 @@
     "start": "node src/index.js",
     "watch": "parcel watch",
     "build": "parcel build",
-    "build:ld": "(npm run clean && sleep 1) && npm install && npm run build && ( sleep 1 && npm run cp:locales && npm run cp:dist)",
-    "build:l": "(npm run clean && sleep 1) && npm install && npm run build && ( sleep 1 && npm run cp:locales)",
-    "cp:locales": "cp -r ./src/locales/ ./dist",
-    "cp:dist": "cp ./dist/* /Volumes/config/www/community/family-week-planner-card",
-    "clean": "npm run clean:dist && npm run clean:node_modules && npm run clean:parcel-cache ",
-    "clean:parcel-cache": "find . -name \".parcel-cache\" -type d -prune -exec rm -rf '{}' +",
-    "clean:node_modules": "find . -name \"node_modules\" -type d -prune -exec rm -rf '{}' +",
-    "clean:dist": "find . -name \"dist\" -type d -prune -exec rm -rf '{}' +"
+    "build:l": "(npm run __clean && sleep 1) && npm install && npm run build && ( sleep 1 && npm run __cp:locales)",
+    "__cp:locales": "cp -r ./src/locales/ ./dist",
+    "__cp:dist": "cp ./dist/* /Volumes/config/www/community/family-week-planner-card",
+    "__clean": "npm run __clean:dist && npm run __clean:node_modules && npm run __clean:parcel-cache ",
+    "__clean:parcel-cache": "find . -name \".parcel-cache\" -type d -prune -exec rm -rf '{}' +",
+    "__clean:node_modules": "find . -name \"node_modules\" -type d -prune -exec rm -rf '{}' +",
+    "__clean:dist": "find . -name \"dist\" -type d -prune -exec rm -rf '{}' +"
   },
   "repository": {
     "type": "git",
